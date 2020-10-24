@@ -2,13 +2,18 @@ import React from 'react';
 import { Typography } from 'antd';
 
 const AtomTitle = (props) => {
+  const align = props.align || 'center';
+
   return (
     <Typography.Title 
-      level={props.heading || 2} 
-      className='playfair-display'
-      style={{ marginBottom:0 }}
+    level={props.heading || 2} 
+    className='playfair-display'
+    style={{ 
+      marginBottom:0,
+      textAlign: `${align}`
+    }}
     >
-      BLOG.
+      {props.title}
     </Typography.Title>
   );
 }

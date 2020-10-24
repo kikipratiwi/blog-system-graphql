@@ -1,2 +1,11 @@
 $text: #202124;
-$line: #EFEAE6;
+$line: #d0d0d040;;
+$secondary: #202124bd;
+
+.border-gray {
+  border-color: $line;
+}
+
+.text-secondary {
+  color: $secondary;
+}

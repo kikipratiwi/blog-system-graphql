@@ -14,11 +14,11 @@ const Footer = () => {
         <Col>
           <AtomSectionTitle 
             fontStyle='f6-ns fw4'
-            sectionTitle='Copyrights Blog 2020.'
+            title='Copyrights Blog 2020.'
           />
         </Col>
         <Col>
-          <AtomTitle />
+          <AtomTitle title='BLOG.' />
         </Col>
       </Row>
     </>
