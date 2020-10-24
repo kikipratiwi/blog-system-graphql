@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 
 const LayoutContainer = (props) => {
-  const spacing = props.spacing || 'mh5 mv4'
+  const spacing = props.spacing || 'mh4 mh5-m mh5-l mv4'
   return (
     <div className={spacing}>
       <Content>{props.children}</Content>

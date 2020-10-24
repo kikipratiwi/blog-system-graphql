@@ -13,7 +13,7 @@ const Footer = () => {
       <Row className='flex items-end' justify='space-between'>
         <Col>
           <AtomSectionTitle 
-            fontStyle='f6-ns'
+            fontStyle='f6 f5-l f5-m'
             title='Copyrights Blog 2020.'
           />
         </Col>

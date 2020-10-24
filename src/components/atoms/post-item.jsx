@@ -23,7 +23,7 @@ const AtomPostItem = (props) => {
         style={{
           lineHeight: 1.8
         }}
-        className='lh-copy lh-title-ns lh-copy-m text-secondary fw4'
+        className='text-secondary fw4'
       >
         {body}
       </Typography.Paragraph>
