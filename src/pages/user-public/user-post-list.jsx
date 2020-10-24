@@ -1,7 +1,7 @@
 import React from 'react';
 
-import LayoutUserPublic from '../../components/layouts/user-public';
-import OrganismPostSection 		from '../../components/organisms/post-section';
+import LayoutUserPublic     from '../../components/layouts/user-public';
+import OrganismPostSection 	from '../../components/organisms/post-section';
 
 const UserPostList = (props) => {
 	return (

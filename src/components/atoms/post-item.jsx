@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Typography, Divider } from 'antd';
 
-import AtomSectionBody from '../../components/atoms/section-body';
-
 import '../../styles/post-item.scss'
 
 const AtomPostItem = (props) => {
