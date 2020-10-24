@@ -17,7 +17,7 @@ const MoleculesHeader = (props) => {
         position: 'fixed', 
         zIndex: 1, 
         width: '100%',
-        left: 0
+        left: -15
       }}
     >
       <AtomTitle className='flex justify-end' title='BLOG.' align='right' />
