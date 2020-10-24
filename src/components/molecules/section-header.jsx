@@ -10,6 +10,14 @@ const MoleculesSectionHeader = (props) => {
       <AtomSectionTitle 
         title={props.title}
       />
+      { props.author ? (
+        <AtomSectionTitle 
+          fontStyle='text-tritary'
+          title={props.author}
+        />
+      ) : (
+        ''
+      )}
       <Divider style={{ marginTop: 100 }} />
     </div>
   );

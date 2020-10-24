@@ -2,10 +2,10 @@ import React from 'react';
 import { Typography } from 'antd';
 
 const AtomSectionTitle = (props) => {
-  const fontStyle = props.fontStyle || 'f3-ns fw4';
+  const fontStyle = props.fontStyle || '';
   
   return (
-    <Typography.Text className={`text-secondary ${fontStyle}`}>
+    <Typography.Text className={`text-secondary f3 f3-l f3-m fw4 ${fontStyle}`}>
       {props.title}
     </Typography.Text>
   );
