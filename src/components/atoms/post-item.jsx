@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { Col, Typography, Divider } from 'antd';
+
+import AtomSectionBody from '../../components/atoms/section-body';
 
 import '../../styles/post-item.scss'
 
 const AtomPostItem = (props) => {
+  const body = props.body || 'This is post body, but only 15 words';
 
   return (
     <Col 
@@ -17,8 +19,13 @@ const AtomPostItem = (props) => {
         {props.title || 'Post Title'}
       </Typography.Text>
 
-      <Typography.Paragraph>
-        {props.body || 'This is post body, but only 15 words'}
+      <Typography.Paragraph 
+        style={{
+          lineHeight: 1.8
+        }}
+        className='lh-copy lh-title-ns lh-copy-m text-secondary fw4'
+      >
+        {body}
       </Typography.Paragraph>
 
       <Link className='read-btn fw6'>

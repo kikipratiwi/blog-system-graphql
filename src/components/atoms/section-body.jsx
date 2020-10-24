@@ -1,12 +1,26 @@
 import React from 'react';
 import { Col, Typography } from 'antd';
 
-const AtomSectionBody = () => {
+const AtomSectionBody = (props) => {
+  const defaultSize = {
+    xs:24,
+    sm:24,
+    md:12,
+    lg:12,
+    xl:12
+  };
 
+  const currentSize = {...defaultSize, ...props.size};
+  
   return (
-    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-      <Typography.Text>
-        BLOG. is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <Col {...currentSize}>        
+      <Typography.Text 
+        style={{
+          lineHeight: 1.8
+        }}
+        className='lh-copy lh-title-ns lh-copy-m text-secondary fw4'
+      >
+        {props.children}
       </Typography.Text>
     </Col>
   );

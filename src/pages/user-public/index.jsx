@@ -5,15 +5,12 @@ import { Row, Divider } from 'antd';
 import LayoutUserPublic from '../../components/layouts/user-public';
 import AtomPostItem from '../../components/atoms/post-item';
 import AtomSectionTitle from '../../components/atoms/section-title';
+import MoleculesSectionHeader from '../../components/molecules/section-header';
 
 const UserPublic = () => {
 	return (
 		<LayoutUserPublic>
-				<AtomSectionTitle 
-					fontStyle='f3-ns fw4'
-					sectionTitle='Posts'
-				/>
-      <Divider style={{ marginTop: 100 }} />
+			<MoleculesSectionHeader title='Posts' />
 			<Row gutter={[24, 24]}>
 				<AtomPostItem />
 				<AtomPostItem />
