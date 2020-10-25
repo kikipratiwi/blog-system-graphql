@@ -6,20 +6,20 @@ import AtomSectionTitle from '../atoms/section-title';
 const MoleculesSectionHeader = (props) => {
 
   return (
-    <div className='section-header'>
+    <>
       <AtomSectionTitle 
         title={props.title}
       />
       { props.author ? (
         <AtomSectionTitle 
-          fontStyle='text-tritary'
+          fontStyle='text-secondary'
           title={props.author}
         />
       ) : (
         ''
       )}
       <Divider style={{ marginTop: 100 }} />
-    </div>
+    </>
   );
 }
 

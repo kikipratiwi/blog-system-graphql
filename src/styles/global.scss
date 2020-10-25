@@ -9,8 +9,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(27, 53%, 97%);
-  color: $text;
+  background-color: $body-color;
+  color: $text-heading;
   font-weight: 200;
 }
 
@@ -27,3 +27,12 @@ code {
   font-family: 'Open Sans', sans-serif;
 }
 
+.btn-default {
+  color: $primary;
+
+  &:hover {
+    color: $text-heading;
+    border-color: $text-heading;
+  }
+
+}

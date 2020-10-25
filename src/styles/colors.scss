@@ -1,15 +1,21 @@
-$text: #202124;
 $line: #d0d0d040;
-$secondary: #202124bd;
+$text-heading: #202124;
+$primary: #202124bd;
+$secondary: #2021245e;
+$body-color: hsl(27, 53%, 97%);
+
+.bg-body {
+  background-color: $body-color;
+}
 
 .border-gray {
   border-color: $line;
 }
 
-.text-secondary {
-  color: $secondary;
+.text-primary {
+  color: $primary;
 }
 
-.text-tritary {
-  color: #2021245e;
+.text-secondary {
+  color: $secondary;
 }

@@ -9,17 +9,17 @@ const MoleculesHeader = (props) => {
 
   return (
     <Layout>
-    <Header 
-      style={{ 
-        backgroundColor: 'transparent',
-        position: 'fixed', 
-        zIndex: 1, 
-        width: '100%',
-        left: -15
-      }}
-    >
-      <AtomTitle className='flex justify-end' title='BLOG.' align='right' />
-    </Header>
+      <Header 
+        style={{ 
+          backgroundColor: 'transparent',
+          position: 'fixed', 
+          zIndex: 1, 
+          width: '100%',
+          left: -15
+        }}
+      >
+        <AtomTitle className='flex justify-end' title='BLOG.' align='right' />
+      </Header>
     </Layout>
   );
 }
