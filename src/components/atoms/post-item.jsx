@@ -10,7 +10,7 @@ const AtomPostItem = (props) => {
   return (
     <Col 
       xs={24} sm={24} md={12} lg={12} xl={6}
-      className='post-card'
+      className='h-100 h5-m h5-l'
     >
       {<Divider />}
       <Typography.Text className='fw6' >
@@ -21,7 +21,7 @@ const AtomPostItem = (props) => {
         style={{
           lineHeight: 1.8
         }}
-        className='text-secondary fw4'
+        className='text-primary fw4'
       >
         {body}
       </Typography.Paragraph>

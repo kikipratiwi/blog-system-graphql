@@ -18,7 +18,7 @@ const AtomSectionBody = (props) => {
         style={{
           lineHeight: 1.8
         }}
-        className='text-secondary fw4'
+        className='text-primary fw4'
       >
         {props.children}
       </Typography.Text>

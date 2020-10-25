@@ -1,15 +1,23 @@
 import React from 'react';
-import { Layout } from 'antd';
+import LoadingOverlay from 'react-loading-overlay';
 
-const { Content } = Layout;
+import AtomHelmet from '../atoms/helmet';
 
 const LayoutContainer = (props) => {
-  const spacing = props.spacing || 'mh4 mh5-m mh5-l mv4'
-  return (
-    <div className={spacing}>
-      <Content>{props.children}</Content>
-    </div>
-  );
+  const spacing = props.spacing || 'mh4 mh5-m mh5-l mv4';
+
+	return (
+		<LoadingOverlay
+			active={props.isLoaderOverlayActive || false}
+			spinner
+			text="Loading..."
+		>
+			<AtomHelmet title={props.title} />
+
+			<main className={spacing}>{props.children}</main>
+
+		</LoadingOverlay>
+	);
 }
 
 export default LayoutContainer; 

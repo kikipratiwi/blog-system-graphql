@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 const AtomHelmet = (props) => (
   <Helmet>
-    <title>Blog. {`| ${props.title}` || ''}</title>
+    <title>Blog. {props.title? `| ${props.title}` : ''}</title>
   </Helmet>
 );
 

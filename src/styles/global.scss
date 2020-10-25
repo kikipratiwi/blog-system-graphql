@@ -9,9 +9,11 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(27, 53%, 97%);
-  color: $text;
+  background-color: $body-color;
+  color: $text-heading;
   font-weight: 200;
+	min-height: 100vh;
+	height: 100%;
 }
 
 code {
@@ -27,3 +29,30 @@ code {
   font-family: 'Open Sans', sans-serif;
 }
 
+.btn-default {
+  color: $primary;
+
+  &:hover {
+    color: $text-heading;
+    border-color: $text-heading;
+  }
+}
+
+.w-85 {
+  width: 85%;
+}
+
+.title {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.35;
+  padding: 0;
+}
+
+main {
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}

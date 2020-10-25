@@ -5,7 +5,7 @@ import { Divider } from 'antd';
 import AtomSectionTitle from '../atoms/section-title';
 import AtomTitle from '../atoms/title';
 
-const Footer = () => {
+const MoleculesFooter = () => {
 
   return (
     <>
@@ -25,4 +25,4 @@ const Footer = () => {
   );
 }
 
-export default Footer; 
+export default MoleculesFooter; 
