@@ -1,13 +1,18 @@
 import React from 'react';
+import { Divider } from 'antd';
 
 import LayoutUserPublic     from '../../components/layouts/user-public';
-import OrganismPostSection 	from '../../components/organisms/post-section';
+import LayoutContainer     from '../../components/layouts/layout-container';
+import MoleculesPostSection 	from '../../components/molecules/post-section';
 
 const UserPostList = (props) => {
 	return (
-		<LayoutUserPublic>
-      <OrganismPostSection user='Eric Law' />
-		</LayoutUserPublic>
+		<LayoutContainer title=''>
+			<LayoutUserPublic title='Post' user='Eric Law'>
+				<div style={{ marginTop: 100 }} />
+				<MoleculesPostSection />
+			</LayoutUserPublic>
+		</LayoutContainer>
 	);
 };
 

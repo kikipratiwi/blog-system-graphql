@@ -7,18 +7,15 @@ import AtomSectionTitle from '../atoms/section-title';
 const { Header } = Layout;
 
 const MoleculesAdminHeader = (props) => {
-  const greetingText = props.isHomepage? 'Good morning, ' : '';  
+  const greetingText = props.isHomepage? 'Morning, ' : '';  
   const author = props.isHomepage? props.user : '';
   const defaultSize = {
-    xs:24,
-    sm:24,
     md:12,
     lg:12,
     xl:12
   };
 
   return (
-    <Layout>
       <Header 
         className='bg-body'
         style={{ 
@@ -31,8 +28,8 @@ const MoleculesAdminHeader = (props) => {
           top: 0
         }}
       >
-        <Row justify='space-between' align='middle'>
-          <Col {...defaultSize}>
+        <Row justify='space-between' align='top'>
+          <Col span={16} >
             <AtomSectionTitle 
               title={greetingText}
             />
@@ -41,18 +38,17 @@ const MoleculesAdminHeader = (props) => {
               title={author}
             />
           </Col>
-          <Col {...defaultSize}>
+          <Col span={8} >
             <AtomTitle title='BLOG.' align='right' />
           </Col>
           <Col span={24}>
-            <Divider style={{margin: 0}} />
+            <Divider style={{margin: 2}} />
           </Col>
           <Col span={24}>
             {props.children}
           </Col>
         </Row>
       </Header>
-    </Layout>
   );
 }
 

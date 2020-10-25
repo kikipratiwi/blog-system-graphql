@@ -6,12 +6,13 @@ const AtomTitle = (props) => {
 
   return (
     <Typography.Title 
-    level={props.heading || 2} 
-    className='playfair-display'
-    style={{ 
-      marginBottom:0,
-      textAlign: `${align}`
-    }}
+      level={2} 
+      className='playfair-display'
+      style={{ 
+        lineHeight: 'inherit',
+        textAlign: `${align}`,
+        margin:0
+      }}
     >
       {props.title}
     </Typography.Title>

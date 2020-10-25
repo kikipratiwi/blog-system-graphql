@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 
-import LayoutPostDetail from '../../components/layouts/post-detail';
+import LayoutUserPublic from '../../components/layouts/user-public';
+import LayoutContainer  from '../../components/layouts/layout-container';
 import AtomTitle        from '../../components/atoms/title';
 import AtomSectionBody  from '../../components/atoms/section-body';
 
@@ -16,42 +17,44 @@ const PostDetail = (props) => {
     xl:16
   };
 	return (
-		<LayoutPostDetail>
-      <Row justify='center'>
-        <Col {...size}>
-          <AtomTitle title={`${props.title}` || 'Long Title of The Post'} />
-        </Col>
-      </Row>
+    <LayoutContainer title=''>
+      <LayoutUserPublic title=''>
+        <Row justify='center' className="mt5">
+          <Col {...size}>
+            <AtomTitle title={`${props.title}` || 'Long Title of The Post'} />
+          </Col>
+        </Row>
 
-      <Row 
-        justify='center'
-        className='mt2 mb3'
-      >
-        <Col {...size}>
-          <div className="flex flex-column">
-            <Link className='playfair-display mb3 tc fw6'>
-              <span className='author-link'>{`by: ${props.username}` || 'Anonim'}</span>
-            </Link>
-            <hr 
-              className='mv3 border-gray'
-              style={{
-                width:'50px',
-                borderWidth: 1
-              }}
-            />
-          </div>
-        </Col>
-      </Row>
+        <Row 
+          justify='center'
+          className='mt2 mb3'
+        >
+          <Col {...size}>
+            <div className="flex flex-column">
+              <Link className='playfair-display mb3 tc fw6'>
+                <span className='author-link'>{`by: ${props.username}` || 'Anonim'}</span>
+              </Link>
+              <hr 
+                className='mv3 border-gray'
+                style={{
+                  width:'50px',
+                  borderWidth: 1
+                }}
+              />
+            </div>
+          </Col>
+        </Row>
 
-      <Row 
-        justify='center'
-        className='mv3'
-      >
-        <AtomSectionBody size={size}>
-          {body}
-        </AtomSectionBody>
-      </Row>
-		</LayoutPostDetail>
+        <Row 
+          justify='center'
+          className='mv3'
+        >
+          <AtomSectionBody size={size}>
+            {body}
+          </AtomSectionBody>
+        </Row>
+      </LayoutUserPublic>
+    </LayoutContainer>
 	);
 };
 

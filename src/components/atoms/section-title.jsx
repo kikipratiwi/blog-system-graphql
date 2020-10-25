@@ -5,7 +5,7 @@ const AtomSectionTitle = (props) => {
   const fontStyle = props.fontStyle || '';
   
   return (
-    <Typography.Text className={`text-primaryf3 f3-l f3-m fw4 ${fontStyle}`}>
+    <Typography.Text className={`text-primary f5 f3-l f3-m fw4 ${fontStyle}`}>
       {props.title}
     </Typography.Text>
   );

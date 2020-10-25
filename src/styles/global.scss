@@ -12,6 +12,8 @@ body {
   background-color: $body-color;
   color: $text-heading;
   font-weight: 200;
+	min-height: 100vh;
+	height: 100%;
 }
 
 code {
@@ -34,5 +36,23 @@ code {
     color: $text-heading;
     border-color: $text-heading;
   }
+}
 
+.w-85 {
+  width: 85%;
+}
+
+.title {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.35;
+  padding: 0;
+}
+
+main {
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }

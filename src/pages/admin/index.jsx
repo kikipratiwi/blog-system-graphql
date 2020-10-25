@@ -2,10 +2,11 @@ import React from 'react';
 import reqwest from 'reqwest';
 import { Link } from 'react-router-dom';
 
-import { ReloadOutlined } from '@ant-design/icons';
+import { ReloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { Popconfirm, message } from 'antd';
 import { List, Button, Skeleton } from 'antd';
 
+import LayoutContainer  			from '../../components/layouts/layout-container';
 import LayoutAdmin from '../../components/layouts/admin-dashboard';
 import AtomSectionBody from '../../components/atoms/section-body';
 
@@ -92,45 +93,49 @@ class AdminPage extends React.Component {
       ) : null;
 
     return ( 
-      <LayoutAdmin>
-        <List
-          className='demo-loadmore-list'
-          loading={initLoading}
-          itemLayout='horizontal'
-          loadMore={loadMore}
-          dataSource={list}
-          renderItem={item => (
-            <List.Item
-              actions={[
-                <a className='author-link' key='list-loadmore-edit'>edit</a>, 
-                <Popconfirm
-                  title='Are you sure delete this post?'
-                  onConfirm={this.confirmed}
-                  onCancel={this.canceled}
-                  okText='Yes'
-                  cancelText='No'
-                >
-                  <a className='author-link' key='list-loadmore-more'>delete</a>
-                </Popconfirm>
-              ]}
-            >
-              <Skeleton avatar title={false} loading={item.loading} active>
-                <List.Item.Meta
-                  title={item.name.last}
-                  description={
-                    <AtomSectionBody size={sectionBodySize} >
-                      This is dummy blog summary...
-                    </AtomSectionBody>
-                  }
-                />
-                <Link className='read-btn fw6'>
-                  View
-                </Link>
-              </Skeleton>
-            </List.Item>
-          )}
-        />
-      </LayoutAdmin>
+      <LayoutContainer title=''>
+        <LayoutAdmin actionBar={ () => (
+          <Button onClick={console.log('Write button clicked')} icon={<PlusOutlined />} className='btn-default mv3'>Write</Button>
+        )}>
+          <List
+            className='demo-loadmore-list'
+            loading={initLoading}
+            itemLayout='horizontal'
+            loadMore={loadMore}
+            dataSource={list}
+            renderItem={item => (
+              <List.Item
+                actions={[
+                  <a className='author-link' key='list-loadmore-edit'>edit</a>, 
+                  <Popconfirm
+                    title='Are you sure delete this post?'
+                    onConfirm={this.confirmed}
+                    onCancel={this.canceled}
+                    okText='Yes'
+                    cancelText='No'
+                  >
+                    <a className='author-link' key='list-loadmore-more'>delete</a>
+                  </Popconfirm>
+                ]}
+              >
+                <Skeleton avatar title={false} loading={item.loading} active>
+                  <List.Item.Meta
+                    title={item.name.last}
+                    description={
+                      <AtomSectionBody size={sectionBodySize} >
+                        This is dummy blog summary...
+                      </AtomSectionBody>
+                    }
+                  />
+                  <Link className='read-btn fw6'>
+                    View
+                  </Link>
+                </Skeleton>
+              </List.Item>
+            )}
+          />
+        </LayoutAdmin>
+      </LayoutContainer>
     );
   }
 };
