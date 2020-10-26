@@ -6,7 +6,7 @@ import { ReloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { Popconfirm, message } from 'antd';
 import { List, Button, Skeleton } from 'antd';
 
-import LayoutContainer  			from '../../components/layouts/layout-container';
+import LayoutContainer from '../../components/layouts/layout-container';
 import LayoutAdmin from '../../components/layouts/admin-dashboard';
 import AtomSectionBody from '../../components/atoms/section-body';
 

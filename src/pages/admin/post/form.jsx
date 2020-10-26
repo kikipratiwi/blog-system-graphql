@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { setState, useEffect} from 'react';
+import { useQuery } from 'graphql-hooks'
 import { Link } from 'react-router-dom';
 import { Row, Col, Button, Space } from 'antd';
 
-import LayoutContainer from '../../../components/layouts/layout-container';
-import LayoutAdmin from '../../../components/layouts/admin-dashboard';
-import AtomTextArea from '../../../components/atoms/inputs/textarea';
+import LayoutContainer  from '../../../components/layouts/layout-container';
+import LayoutAdmin      from '../../../components/layouts/admin-dashboard';
+import AtomTextArea     from '../../../components/atoms/inputs/textarea';
+
+const CREATE_POST = `
+  query {
+    post(id: 1) {
+      id
+      title
+      body
+    }
+  }
+`
+
+const UPDATE_POST = `
+  mutation (
+    $id: ID!,
+    $input: UpdatePostInput!
+  ) {
+    updatePost(id: $id, input: $input) {
+      id
+      body
+    }
+  }
+`
 
 const PostForm = (props) => {
   const size = {
@@ -14,6 +37,20 @@ const PostForm = (props) => {
     lg:18,
     xl:16
   };
+
+  const createPostParams = {
+    "input": {
+      "title": "A Very Captivating Post Title",
+      "body": "Some interesting content."
+    }
+  }
+
+  const updatePostParams = {
+    "id": 1,
+    "input": {
+      "body": "Some updated content."
+    }
+  }
 
   const publish = () => {
     console.log('publish button clicked');
