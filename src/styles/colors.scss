@@ -1,0 +1,21 @@
+$line: #d0d0d040;
+$text-heading: #202124;
+$primary: #202124bd;
+$secondary: #2021245e;
+$body-color: hsl(27, 53%, 97%);
+
+.bg-body {
+  background-color: $body-color;
+}
+
+.border-gray {
+  border-color: $line;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-secondary {
+  color: $secondary;
+}

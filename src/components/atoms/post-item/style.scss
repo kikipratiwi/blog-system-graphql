@@ -1,0 +1,36 @@
+@import '../../../styles/colors.scss'; 
+
+.post-card {
+  height: 280px;
+}
+
+.read-btn {
+  background: linear-gradient(90deg, rgba(203,197,193,0.9051820557324493) 35%, rgba(203,197,193,1) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  transition: background-position 0.25s ease-in;
+  color: $primary;
+
+  &:hover {
+    color: $primary;
+    background-position: 0 105%;
+  }
+
+}
+
+.author-link {
+  background-position: 0 88%;
+  transition: background-position 0.25s ease-in;
+  color: $primary;
+  text-align: center;
+
+  &:hover {
+    color: $primary;
+    background: linear-gradient(90deg, rgba(203,197,193,0.9051820557324493) 35%, rgba(203,197,193,1) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 105%;
+  }
+
+}
