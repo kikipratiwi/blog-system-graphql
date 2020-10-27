@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Row, Col, Divider } from 'antd';
 
 import AtomTitle from '../atoms/title';

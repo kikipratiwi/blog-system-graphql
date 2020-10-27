@@ -3,12 +3,13 @@ import { Layout, Divider, Row, Col } from 'antd';
 
 import AtomTitle from '../atoms/title';
 import AtomSectionTitle from '../atoms/section-title';
+import { defaultData } from '../../data/index'
 
 const { Header } = Layout;
 
 const MoleculesAdminHeader = (props) => {
   const greetingText = props.isHomepage? 'Morning, ' : '';  
-  const author = props.isHomepage? props.user : '';
+  const author = props.user? props.user : defaultData.user.name;
   const defaultSize = {
     md:12,
     lg:12,

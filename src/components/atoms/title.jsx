@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from 'antd';
 
+
 const AtomTitle = (props) => {
   const align = props.align || 'center';
 
