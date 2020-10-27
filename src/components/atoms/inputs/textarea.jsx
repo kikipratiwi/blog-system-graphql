@@ -2,6 +2,11 @@ import React from 'react';
 import { Form, Input } from 'antd';
 
 const AtomTextArea = (props) => {
+	const handleChange = (event) => {
+			console.log(props.value)
+			props.onChange(event.target.value)
+	}
+
 	return (
 		<Form.Item
 			name={props.name}
@@ -15,6 +20,8 @@ const AtomTextArea = (props) => {
 			]}
 		>
 			<Input.TextArea
+				defaultValue={props.value}
+				onChange={handleChange}
         autoSize={true}
         bordered={false}
 				placeholder={props.placeholder || 'Placeholder'}

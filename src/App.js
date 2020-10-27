@@ -5,7 +5,6 @@ import PostDetail from './pages/user-public/post-detail';
 import UserPostList from './pages/user-public/user-post-list';
 import AdminPage from './pages/admin/index';
 import PostForm from './pages/admin/post/form';
-import PostList from './components/molecules/try'
 
 import './styles/global.scss';
 
@@ -23,12 +22,11 @@ const fakeDataUser = {
 
 const App = () => {
   return (
-    // <>
-    // <PostForm isNew={true} key={fakeData.id} {...fakeData}/>
     // <PostForm isNew={false} key={fakeData.id} {...fakeData}/>
-    // </>
+    <PostForm isNew={true} {...fakeDataUser} />
+    // <MyComponent/>
     // <AdminPage key={fakeDataUser.id} {...fakeDataUser} isUserPosts={true} />
-    <UserPostList key={fakeDataUser.id} {...fakeDataUser} isUserPosts={true} />
+    // <UserPostList key={fakeDataUser.id} {...fakeDataUser} isUserPosts={false} />
     // <PostDetail key={fakeData.id} {...fakeData} />
     // <UserPublic/>
   );
