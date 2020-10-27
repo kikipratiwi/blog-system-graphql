@@ -31,7 +31,7 @@ const renderRoutes = () => {
 					exact={route.exact}
 					name={route.name}
 					render={(props) =>
-						<route.component {...defaultData.user} {...props} />
+						<route.component {...defaultData.user} {...route.isNew} {...props} />
 					}
 				/>
 			);

@@ -16,18 +16,18 @@ export const postQuery = {
 				}
 			}`},
 		GET_POST_AUTHOR: (id) => { 
-		return `query {
-			post(id: ${id}) {
-				id
-				title
-				body
-				user {
+			return `query {
+				post(id: ${id}) {
 					id
-					name
-					username
+					title
+					body
+					user {
+						id
+						name
+						username
+					}
 				}
-			}
-		}`},
+			}`},
 	GET_POSTS: ` 
 		query (
 			$options: PageQueryOptions
@@ -44,16 +44,21 @@ export const postQuery = {
 			}
 		}`,
 	GET_USER_POSTS: (id) => {
-		return `query {
-			user(id: ${id}) {
-				posts {
-					data {
-						id
-						title
-						body
+		return `query  (
+				$options: PageQueryOptions
+			) {
+				user(id: ${id}) {
+					posts(options: $options) {
+						data {
+							id
+							title
+							body
+						}
+						meta {
+							totalCount
+						}
 					}
 				}
-			}
 		}`}
 };
 
@@ -88,7 +93,7 @@ export const postMutation = {
 }
 
 export const postParams = {
-	GET_POSTS: (page = 1, limit = 7) => {
+	GET_POSTS: (page = 0, limit = 0) => {
 		return {
 			variables: {
 				'options': {

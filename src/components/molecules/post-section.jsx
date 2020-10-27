@@ -7,11 +7,10 @@ import AtomPostItem from '../atoms/post-item/post-item';
 import { postQuery, postParams } from '../../services/post';
 
 const MoleculesPostSection = (props) => {
-	const QUERY = props.userId? postQuery.GET_USER_POSTS(props.userId) : postQuery.GET_POSTS;
-
+	const QUERY = props.isUserPosts && props.userId? postQuery.GET_USER_POSTS(props.userId) : postQuery.GET_POSTS;
+	
 	const { loading, error, data } = useQuery(
-		QUERY,
-		postParams.GET_POSTS()
+		QUERY
 	)
 
 	let posts

@@ -1,8 +1,8 @@
-const postSummary = (text, limit=10) => {
+const postSummary = (text="", limit=10) => {
   return text.split(" ", limit).join(" ");
 }
 
-const toTitleCase = (str) => {
+const toTitleCase = (str="") => {
   return str.replace(
     /\w\S*/g,
     (txt) => {

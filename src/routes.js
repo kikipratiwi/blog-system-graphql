@@ -32,6 +32,7 @@ const routes = [
 		exact: true,
 		name: 'Admin Post New',
 		path: '/admin/post/new',
+		isNew: true,
 	},
 	{
 		adminGuard: true,

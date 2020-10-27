@@ -23,7 +23,7 @@ const UserPostList = (props) => {
 			<LayoutContainer title={`by ${author}`}>
 				<LayoutUserPublic title='Post' user={author} >
 					<div style={{ marginTop: 100 }} />
-					<MoleculesPostSection userId={userId} {...props} />
+					<MoleculesPostSection isUserPosts={true} userId={userId} {...props} />
 				</LayoutUserPublic>
 			</LayoutContainer>
 			) : (

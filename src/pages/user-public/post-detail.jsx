@@ -45,7 +45,7 @@ const PostDetail = (props) => {
             <div className="flex flex-column">
               <Link 
                 to={`/${data.post.user.id}/posts`} 
-                className='playfair-display mb3 tc fw6'
+                className='playfair-display mb3 tc fw6 f5'
               >
                 <span className='author-link'>{`by: ${data.post.user.name}`}</span>
               </Link>

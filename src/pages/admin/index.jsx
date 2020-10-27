@@ -1,143 +1,109 @@
-import React from 'react';
-import reqwest from 'reqwest';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { useQuery, useMutation, useManualQuery } from 'graphql-hooks';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Button, List, message, Popconfirm, Skeleton } from 'antd';
+import { PlusOutlined, ReloadOutlined } from '@ant-design/icons';
 
-import { ReloadOutlined, PlusOutlined } from '@ant-design/icons';
-import { Popconfirm, message } from 'antd';
-import { List, Button, Skeleton } from 'antd';
-
-import LayoutContainer from '../../components/layouts/layout-container';
-import LayoutAdmin from '../../components/layouts/admin-dashboard';
 import AtomSectionBody from '../../components/atoms/section-body';
+import LayoutAdmin from '../../components/layouts/admin-dashboard';
+import LayoutContainer from '../../components/layouts/layout-container';
+import { postQuery, postParams, postMutation } from '../../services/post';
+import { postSummary, toTitleCase } from '../../utils/post';
 
-const count = 5;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
+const AdminPage = (props) => {
+  const history = useHistory();
 
-class AdminPage extends React.Component {
-  state = {
-    initLoading: true,
-    loading: false,
-    data: [],
-    list: [],
-  };
-
-  componentDidMount() {
-    this.getData(res => {
-      this.setState({
-        initLoading: false,
-        data: res.results,
-        list: res.results,
-      });
-    });
-  }
-
-  getData = callback => {
-    reqwest({
-      url: fakeDataUrl,
-      type: 'json',
-      method: 'get',
-      contentType: 'application/json',
-      success: res => {
-        callback(res);
-      },
-    });
-  };
-
-  onLoadMore = () => {
-    this.setState({
-      loading: true,
-      list: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
-    });
-    this.getData(res => {
-      const data = this.state.data.concat(res.results);
-      this.setState(
-        {
-          data,
-          list: data,
-          loading: false,
-        },
-        () => {
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event('resize'));
-        },
-      );
-    });
-  };
-
-  confirmed = (e) => {
-    console.log(e);
-    message.success('Click on Yes');
-  };
-
-  canceled = (e) => {
-    console.log(e);
-    message.error('Click on No');
-  };
+  const [deletePost, { data:deleteData }] = useManualQuery(postMutation.DELETE_POST);
   
-  render() {
-    const sectionBodySize = {
-      xs:20,
-      sm:20,
-      md:20,
-      lg:20,
-      xl:20
-    };
-    const { initLoading, loading, list } = this.state;
-    const loadMore =
-      !initLoading && !loading ? (
-        <div className='tc mv3'>
-          <Button onClick={this.onLoadMore} icon={<ReloadOutlined />} className='btn-default mv3'>loading more</Button>
-        </div>
-      ) : null;
+	const sectionBodySize = {
+		xs: 20,
+		sm: 20,
+		md: 20,
+		lg: 20,
+		xl: 20,
+	};
 
-    return ( 
-      <LayoutContainer title=''>
-        <LayoutAdmin actionBar={ () => (
-          <Button onClick={console.log('Write button clicked')} icon={<PlusOutlined />} className='btn-default mv3'>Write</Button>
-        )}>
-          <List
-            className='demo-loadmore-list'
-            loading={initLoading}
-            itemLayout='horizontal'
-            loadMore={loadMore}
-            dataSource={list}
-            renderItem={item => (
-              <List.Item
-                actions={[
-                  <a className='author-link' key='list-loadmore-edit'>edit</a>, 
-                  <Popconfirm
-                    title='Are you sure delete this post?'
-                    onConfirm={this.confirmed}
-                    onCancel={this.canceled}
-                    okText='Yes'
-                    cancelText='No'
-                  >
-                    <a className='author-link' key='list-loadmore-more'>delete</a>
-                  </Popconfirm>
-                ]}
-              >
-                <Skeleton avatar title={false} loading={item.loading} active>
-                  <List.Item.Meta
-                    title={item.name.last}
-                    description={
-                      <AtomSectionBody size={sectionBodySize} >
-                        This is dummy blog summary...
-                      </AtomSectionBody>
+  const { loading, error, data } = useQuery(
+		postQuery.GET_USER_POSTS(props.id),
+		postParams.GET_POSTS()
+	)
+  
+  let posts
+
+  console.log(props);
+
+	if (!loading && data) {
+		posts = data.user.posts.data;
+	}
+  
+  if (loading && !data) return 'Loading...'
+	if (error) return 'Something Bad Happened'
+
+	return (
+		<LayoutContainer title="Dashboard">
+			<LayoutAdmin
+				actionBar={() => (
+          <Button
+            className="btn-default mv3"
+            icon={<PlusOutlined />}
+            onClick={() => {history.push(`/admin/post/new`);}}>
+            Write
+          </Button>
+				)}
+        {...props}>
+				<List
+					className="demo-loadmore-list"
+					dataSource={posts}
+					postLayout="horizontal"
+					renderItem={(post) => (
+						<List.Item
+							actions={[
+                <Link 
+                  to={{
+                    pathname: `/admin/post/${post.id}/edit`,
+                    post: post
+                  }}
+                  className="author-link" 
+                  key="list-loadmore-edit">
+									edit
+								</Link>,
+								<Popconfirm
+									cancelText="No"
+									okText="Yes"
+									onConfirm={
+                    () => {
+                      deletePost(postParams.DELETE_POST(post.id))
+                      message.success(`Post successfully deleted`)
+                      if (deleteData) console.log(deleteData)
                     }
-                  />
-                  <Link className='read-btn fw6'>
-                    View
-                  </Link>
-                </Skeleton>
-              </List.Item>
-            )}
-          />
-        </LayoutAdmin>
-      </LayoutContainer>
-    );
-  }
+                  }
+									title="Are you sure delete this post?">
+                  <Link
+                    className="author-link" 
+                    key="list-loadmore-more">
+										delete
+									</Link>
+								</Popconfirm>,
+							]}>
+							<Skeleton avatar title={false} loading={post.loading} active>
+								<List.Item.Meta
+									title={toTitleCase(post.title)}
+									description={
+										<AtomSectionBody size={sectionBodySize}>
+											{`${postSummary(post.body)}...`}
+										</AtomSectionBody>
+									}
+								/>
+								<Link to={`/post/${post.id}`} className="read-btn fw6">View</Link>
+							</Skeleton>
+						</List.Item>
+					)}
+				/>
+			</LayoutAdmin>
+		</LayoutContainer>
+	);
 };
 
 export default AdminPage;
