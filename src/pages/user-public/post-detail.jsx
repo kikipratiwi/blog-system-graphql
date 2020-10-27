@@ -1,33 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { useQuery } from 'graphql-hooks';
 
 import LayoutUserPublic from '../../components/layouts/user-public';
-import LayoutContainer  from '../../components/layouts/layout-container';
-import AtomTitle        from '../../components/atoms/title';
-import AtomSectionBody  from '../../components/atoms/section-body';
+import LayoutContainer from '../../components/layouts/layout-container';
+import AtomTitle from '../../components/atoms/title';
+import AtomSectionBody from '../../components/atoms/section-body';
 
+import { postQuery } from '../../services/post';
 
-const GET_POST_AUTHOR = (id) => {
-  return ` query {
-    post(id: ${id}) {
-      user {
-        id
-        name
-        username
-      }
-    }
-  }
-`};
-  
+import { toTitleCase } from '../../utils/post';
+ 
 const PostDetail = (props) => {
-  const { loading, error, data } = useQuery(GET_POST_AUTHOR(props.id), {});
+  const { postId } = useParams();
+
+  const { loading, error, data } = useQuery(postQuery.GET_POST_AUTHOR(postId), {});
 
   if (loading && !data) return 'Loading...'
   if (error) return 'Something Bad Happened'
   
-  const body = 'BLOG. is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
   const size = {
     xs:24,
     sm:24,
@@ -35,12 +27,13 @@ const PostDetail = (props) => {
     lg:18,
     xl:16
   };
+
 	return (
-    <LayoutContainer title={props.title}>
+    <LayoutContainer title={toTitleCase(data.post.title)}>
       <LayoutUserPublic title=''>
         <Row justify='center' className="mt5">
           <Col {...size}>
-            <AtomTitle title={`${props.title}` || 'Long Title of The Post'} />
+            <AtomTitle title={toTitleCase(data.post.title)} />
           </Col>
         </Row>
 
@@ -50,8 +43,11 @@ const PostDetail = (props) => {
         >
           <Col {...size}>
             <div className="flex flex-column">
-              <Link className='playfair-display mb3 tc fw6'>
-                <span className='author-link'>{`by: ${data.post.user.name}` || 'Anonim'}</span>
+              <Link 
+                to={`/${data.post.user.id}/posts`} 
+                className='playfair-display mb3 tc fw6'
+              >
+                <span className='author-link'>{`by: ${data.post.user.name}`}</span>
               </Link>
               <hr 
                 className='mv3 border-gray'
@@ -69,7 +65,7 @@ const PostDetail = (props) => {
           className='mv3'
         >
           <AtomSectionBody size={size}>
-            {props.body}
+            {data.post.body}
           </AtomSectionBody>
         </Row>
       </LayoutUserPublic>

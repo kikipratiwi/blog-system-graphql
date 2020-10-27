@@ -11,7 +11,7 @@ const routes = [
 		component: React.lazy(() => import('./pages/user-public/user-post-list')),
 		exact: true,
 		name: 'User Public User Post List',
-		path: '/:username/posts',
+		path: '/:userId/posts',
 	},
 	{
 		component: React.lazy(() => import('./pages/user-public/post-detail')),
@@ -31,7 +31,7 @@ const routes = [
 		component: React.lazy(() => import('./pages/admin/post/form')),
 		exact: true,
 		name: 'Admin Post New',
-		path: '/admin/post/:postId/new',
+		path: '/admin/post/new',
 	},
 	{
 		adminGuard: true,

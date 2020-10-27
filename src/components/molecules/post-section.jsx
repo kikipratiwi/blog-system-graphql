@@ -1,12 +1,13 @@
 import React, { useState, useEffect} from 'react';
-import { useQuery } from 'graphql-hooks'
+import { useQuery } from 'graphql-hooks';
 import { Row } from 'antd';
 
-import AtomPostItem from '../../components/atoms/post-item';
+import AtomPostItem from '../atoms/post-item/post-item';
+
 import { postQuery, postParams } from '../../services/post';
 
 const MoleculesPostSection = (props) => {
-	const QUERY = props.isUserPosts? postQuery.GET_USER_POSTS(props.id) : postQuery.GET_POSTS;
+	const QUERY = props.userId? postQuery.GET_USER_POSTS(props.userId) : postQuery.GET_POSTS;
 
 	const { loading, error, data } = useQuery(
 		QUERY,
@@ -15,7 +16,7 @@ const MoleculesPostSection = (props) => {
 
 	let posts
 	if (!loading && data) {
-		posts = props.isUserPosts? data.user.posts.data : data.posts.data;
+		posts = props.userId? data.user.posts.data : data.posts.data;
 	}
 	if (loading && !data) return 'Loading...'
 	if (error) return 'Something Bad Happened'
@@ -24,7 +25,10 @@ const MoleculesPostSection = (props) => {
 		<Row gutter={[24, 24]}>
 			{!loading && data ? (
 				posts.map(({ id, ...restProps }) => (
-					<AtomPostItem key={id} {...restProps} />
+					<AtomPostItem 
+						key={id} 
+						id={id}
+						{...restProps} />
 				)) 
 				) : (
 					null

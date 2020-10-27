@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { useMutation } from 'graphql-hooks'
+import { useMutation, useManualQuery } from 'graphql-hooks'
 import { Row, Col, Button, Space, Form, message } from 'antd';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -21,33 +21,38 @@ const PostForm = (props) => {
     xl:16
   };
 
-  // const [updatePost] = useMutation(postMutation.UPDATE_POST);
   const [updatePost, { loading:updateLoading, error:updateError, data:updateData }] = useMutation(postMutation.UPDATE_POST);
-  const [createPost, { loading:createLoading, error:createError, data:createData }] = useMutation(postMutation.CREATE_POST);
-  // const [createPost] = useMutation(postMutation.CREATE_POST);
-	const [isCreating, setIsCreating] = useState(false);
+  const [createPost, { loading:createLoading, error:createError, data:createData }] = useManualQuery(postMutation.CREATE_POST);
+  const [isCreating, setIsCreating] = useState(false);
   const [newTitle, setNewTitle] = useState(props.title);
   const [newBody, setNewBody] = useState(props.body);
 
-  const publish = () => {
+  // const publish = async () => {
+  async function publish() {
     console.log('publish button clicked'+newTitle+newBody);
-    createPost(postParams.CREATE_POST(newTitle, newBody));
+    await createPost(postParams.CREATE_POST(newTitle, newBody));
 
-    if (createData) {
-      setIsCreating(true);
+    // setTimeout(() => { 
+      console.log('createData', createData) 
+    // }, 1500);
+    // return () => {
+      if (createData) {
+        setIsCreating(true);
+  
+        message.success('Post successfully published');
+        
+        // setTimeout(() => { 
+          history.push(`/post/${createData.createPost.id}`);
+        // }, 2000);
+      } else if (createError) {
+        setIsCreating(false);
+  
+        createError.error.errors.map((err, idx) => {
+          return message.error(`${idx}: ${err.message}`);
+        })
+      }
 
-      message.success('Post successfully published');
-      
-      setTimeout(() => {
-				history.push(`/post/${createData.createPost.id}`);
-			}, 2000);
-    } else if (createError) {
-      setIsCreating(false);
-
-      createError.error.errors.map((err, idx) => {
-        return message.error(`${idx}: ${err.message}`);
-      })
-    }
+    // }
   }
 
   const update = () => {
@@ -94,7 +99,7 @@ const PostForm = (props) => {
           <Button 
             type='link' 
             className='btn-default mv3' 
-            onClick={cancel}
+            onClick={()=> {cancel()}}
           >
             {props.isNew? 'Discard' : 'Cancel'}
           </Button>
@@ -103,7 +108,6 @@ const PostForm = (props) => {
             className='btn-default mv3'
             loading={isCreating}
             onClick={()=> {props.isNew? publish() : update()}} 
-            htmlType='submit'
           >
             {props.isNew? 'Publish' : 'Update'}
           </Button>

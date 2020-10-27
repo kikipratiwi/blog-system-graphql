@@ -7,6 +7,27 @@ export const postQuery = {
 				body
 			}
 		}`},
+		GET_USER: (id) => { 
+			return `query {
+				user(id: ${id}) {
+					id
+					name
+					username
+				}
+			}`},
+		GET_POST_AUTHOR: (id) => { 
+		return `query {
+			post(id: ${id}) {
+				id
+				title
+				body
+				user {
+					id
+					name
+					username
+				}
+			}
+		}`},
 	GET_POSTS: ` 
 		query (
 			$options: PageQueryOptions

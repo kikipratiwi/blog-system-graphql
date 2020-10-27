@@ -7,11 +7,9 @@ import MoleculesFooter from '../molecules/footer';
 const { Content } = Layout;
 
 const LayoutUserPublic = (props) => {
-  const author = props.user || false;
-
   return (
     <>
-			<MoleculesUserHeader title={props.title} user={author} />
+			<MoleculesUserHeader title={props.title} user={props.user} />
       <Content>{props.children}</Content>
       <MoleculesFooter />
     </>
