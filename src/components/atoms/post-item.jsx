@@ -2,9 +2,7 @@ import React from 'react';
 import { Col, Typography, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { postSummary, toTitleCase } from '../../../utils/post';
-
-import './style.scss'
+import { postSummary, toTitleCase } from '../../utils/post';
 
 const AtomPostItem = (props) => {
   return (

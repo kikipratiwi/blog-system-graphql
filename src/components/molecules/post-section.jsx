@@ -2,7 +2,7 @@ import React from 'react';
 import { Row } from 'antd';
 import { useQuery } from 'graphql-hooks';
 
-import AtomPostItem from '../atoms/post-item/post-item';
+import AtomPostItem from '../atoms/post-item';
 
 import { postQuery } from '../../services/post';
 
@@ -17,7 +17,7 @@ const MoleculesPostSection = (props) => {
 	if (!loading && data) {
 		posts = props.userId? data.user.posts.data : data.posts.data;
 	}
-	if (loading && !data) return 'Loading...'
+	if (loading && !data) return ''
 	if (error) return 'Something Bad Happened'
 	
 	return (

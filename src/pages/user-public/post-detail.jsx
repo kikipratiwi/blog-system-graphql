@@ -16,7 +16,7 @@ const PostDetail = (props) => {
 
   const { loading, error, data } = useQuery(postQuery.GET_POST_AUTHOR(postId), {});
 
-  if (loading && !data) return 'Loading...'
+  if (loading && !data) return ''
   if (error) return 'Something Bad Happened'
   
   const size = {

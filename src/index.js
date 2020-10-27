@@ -5,8 +5,8 @@ import { GraphQLClient, ClientContext } from 'graphql-hooks'
 
 import config from './config';
 
-import 'tachyons';
 import 'antd/dist/antd.css';
+import 'tachyons';
 
 import App from './App';
 

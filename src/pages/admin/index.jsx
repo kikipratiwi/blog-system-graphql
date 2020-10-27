@@ -37,7 +37,7 @@ const AdminPage = (props) => {
 		posts = data.user.posts.data;
 	}
   
-  if (loading && !data) return 'Loading...'
+  if (loading && !data) return ''
 	if (error) return 'Something Bad Happened'
 
 	return (
@@ -88,6 +88,9 @@ const AdminPage = (props) => {
 							]}>
 							<Skeleton avatar title={false} loading={post.loading} active>
 								<List.Item.Meta
+									style={{
+										fontWeight: 600
+									}}
 									title={toTitleCase(post.title)}
 									description={
 										<AtomSectionBody size={sectionBodySize}>

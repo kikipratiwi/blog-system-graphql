@@ -22,7 +22,7 @@ const PostForm = (props) => {
   };
 
   let post = props.location.post || {};
-  let isNew = !post? true : false 
+  let isNew = !post.id? true : false 
 
   const [updatePost, { error:updateError, data:updateData }] = useManualQuery(postMutation.UPDATE_POST);
   const [createPost, { error:createError, data:createData }] = useManualQuery(postMutation.CREATE_POST);
