@@ -2,7 +2,7 @@
 This is a Blog System site that fetch data from [GraphQL API](https://graphqlzero.almansi.me/#examples). This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live Demo
-Open [Blog System Live](https://blog-system-live.herokuapp.com/) to view it live. But, since this site  just simulate the basic CRUD API without any authorization, you have to access admin page manually by go to this url [Admin Page](https://blog-system-live.herokuapp.com/admin/).
+Open [Blog System Live](https://blog-system-live.herokuapp.com/) to view it live. But, since this site  just simulate the basic CRUD API without any authorization, you have to access admin page manually by add `/admin` after base url, or access this [Admin Page](https://blog-system-live.herokuapp.com/admin/) for live mode.
 
 ## Project Dependencies
 - **antd** as React UI library 
