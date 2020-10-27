@@ -37,7 +37,7 @@ const AdminPage = (props) => {
 		posts = data.user.posts.data;
 	}
   
-  if (loading && !data) return 'Loading...'
+  if (loading && !data) return ''
 	if (error) return 'Something Bad Happened'
 
 	return (
