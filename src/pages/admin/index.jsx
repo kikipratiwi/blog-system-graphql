@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { useQuery, useMutation, useManualQuery } from 'graphql-hooks';
-import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { Button, List, message, Popconfirm, Skeleton } from 'antd';
-import { PlusOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { PlusOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
+import { useQuery, useManualQuery } from 'graphql-hooks';
 
 import AtomSectionBody from '../../components/atoms/section-body';
 import LayoutAdmin from '../../components/layouts/admin-dashboard';
 import LayoutContainer from '../../components/layouts/layout-container';
-import { postQuery, postParams, postMutation } from '../../services/post';
+
 import { postSummary, toTitleCase } from '../../utils/post';
+import { postQuery, postParams, postMutation } from '../../services/post';
 
 const AdminPage = (props) => {
   const history = useHistory();
@@ -31,8 +32,6 @@ const AdminPage = (props) => {
 	)
   
   let posts
-
-  console.log(props);
 
 	if (!loading && data) {
 		posts = data.user.posts.data;

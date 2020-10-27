@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Col, Typography, Divider } from 'antd';
+import { Link } from 'react-router-dom';
 
 import { postSummary, toTitleCase } from '../../../utils/post';
 

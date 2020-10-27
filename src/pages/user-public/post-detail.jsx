@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Row, Col } from 'antd';
 import { useQuery } from 'graphql-hooks';
+import { Row, Col } from 'antd';
+import { Link, useParams } from 'react-router-dom';
 
-import LayoutUserPublic from '../../components/layouts/user-public';
-import LayoutContainer from '../../components/layouts/layout-container';
-import AtomTitle from '../../components/atoms/title';
 import AtomSectionBody from '../../components/atoms/section-body';
+import AtomTitle from '../../components/atoms/title';
+import LayoutContainer from '../../components/layouts/layout-container';
+import LayoutUserPublic from '../../components/layouts/user-public';
 
 import { postQuery } from '../../services/post';
-
 import { toTitleCase } from '../../utils/post';
  
 const PostDetail = (props) => {

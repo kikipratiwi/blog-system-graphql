@@ -10,12 +10,10 @@ const LayoutContainer = (props) => {
 		<LoadingOverlay
 			active={props.isLoaderOverlayActive || false}
 			spinner
-			text="Loading..."
-		>
+			text="Loading...">
 			<AtomHelmet title={props.title} />
-
 			<main className={spacing}>{props.children}</main>
-
+			
 		</LoadingOverlay>
 	);
 }

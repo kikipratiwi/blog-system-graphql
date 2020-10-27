@@ -3,7 +3,6 @@ import { Form, Input } from 'antd';
 
 const AtomTextArea = (props) => {
 	const handleChange = (event) => {
-			console.log(props.value)
 			props.onChange(event.target.value)
 	}
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { Row, Col, Divider } from 'antd';
+import { Row, Col } from 'antd';
 
-import AtomTitle from '../atoms/title';
 import AtomSectionTitle from '../atoms/section-title';
+import AtomTitle from '../atoms/title';
 
 const MoleculesUserHeader = (props) => {
   const author = props.user ? ` / by: ${props.user}` : '';

@@ -2,23 +2,12 @@ import React, { Suspense }  from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Spinner from './components/atoms/spinner';
-import UserPublic from './pages/user-public/index';
-import PostDetail from './pages/user-public/post-detail';
-import UserPostList from './pages/user-public/user-post-list';
-import AdminPage from './pages/admin/index';
-import PostForm from './pages/admin/post/form';
 
-import routes from './routes';
 import defaultData from './data'; 
+import routes from './routes';
 
 import './styles/colors.scss';
 import './styles/global.scss';
-
-const fakeData = {
-  id: 5,
-  title: 'title from the props',
-  body: 'also body from the props'
-}
 
 const renderRoutes = () => {
 
@@ -51,20 +40,10 @@ const renderRoutes = () => {
 
 const App = (props) => {
   return (
-    <>
     <Switch>
 			<Suspense fallback={<Spinner />}>{renderRoutes()}</Suspense>
 			<Redirect to="/" />
 		</Switch>
-      {/* 
-    */}
-    {/* <AdminPage key={defaultData.user.id} {...defaultData.user} isUserPosts={true} />
-    <PostForm isNew={false} {...fakeData}/>
-    <UserPostList key={defaultData.user.id} {...defaultData.user} isUserPosts={false} />
-    <PostDetail key={fakeData.id} {...fakeData} />
-    <PostForm isNew={true} {...defaultData.user} />
-    <UserPublic/> */}
-    </>
   );
 }
 

@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react';
-import { useQuery } from 'graphql-hooks';
+import React from 'react';
 import { Row } from 'antd';
+import { useQuery } from 'graphql-hooks';
 
 import AtomPostItem from '../atoms/post-item/post-item';
 
-import { postQuery, postParams } from '../../services/post';
+import { postQuery } from '../../services/post';
 
 const MoleculesPostSection = (props) => {
 	const QUERY = props.isUserPosts && props.userId? postQuery.GET_USER_POSTS(props.userId) : postQuery.GET_POSTS;

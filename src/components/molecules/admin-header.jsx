@@ -1,8 +1,9 @@
 import React from 'react';
 import { Layout, Divider, Row, Col } from 'antd';
 
-import AtomTitle from '../atoms/title';
 import AtomSectionTitle from '../atoms/section-title';
+import AtomTitle from '../atoms/title';
+
 import { defaultData } from '../../data/index'
 
 const { Header } = Layout;
@@ -10,11 +11,6 @@ const { Header } = Layout;
 const MoleculesAdminHeader = (props) => {
   const greetingText = props.isHomepage? 'Morning, ' : '';  
   const author = props.user? props.user : defaultData.user.name;
-  const defaultSize = {
-    md:12,
-    lg:12,
-    xl:12
-  };
 
   return (
       <Header 
