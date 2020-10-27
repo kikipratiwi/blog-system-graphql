@@ -26,7 +26,7 @@ const AtomPostItem = (props) => {
         {postSummary(props.body)+'...'}
       </Typography.Paragraph>
 
-      <Link className='read-btn fw6'>
+      <Link className='read-btn fw6' to={`/post/${props.id}`}>
         Read
       </Link>
     </Col> 

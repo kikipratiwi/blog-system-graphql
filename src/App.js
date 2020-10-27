@@ -22,13 +22,16 @@ const fakeDataUser = {
 
 const App = () => {
   return (
-    // <PostForm isNew={false} key={fakeData.id} {...fakeData}/>
+    <>
+      {/* 
+      <AdminPage key={fakeDataUser.id} {...fakeDataUser} isUserPosts={true} />
+      <PostForm isNew={false} {...fakeData}/>
+      <UserPublic/>
+      <UserPostList key={fakeDataUser.id} {...fakeDataUser} isUserPosts={false} />
+      <PostDetail key={fakeData.id} {...fakeData} />
+    */}
     <PostForm isNew={true} {...fakeDataUser} />
-    // <MyComponent/>
-    // <AdminPage key={fakeDataUser.id} {...fakeDataUser} isUserPosts={true} />
-    // <UserPostList key={fakeDataUser.id} {...fakeDataUser} isUserPosts={false} />
-    // <PostDetail key={fakeData.id} {...fakeData} />
-    // <UserPublic/>
+    </>
   );
 }
 

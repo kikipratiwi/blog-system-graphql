@@ -102,7 +102,7 @@ const PostForm = (props) => {
           <Button 
             className='btn-default mv3'
             loading={isCreating}
-            onClick={props.isNew? publish : update} 
+            onClick={()=> {props.isNew? publish() : update()}} 
             htmlType='submit'
           >
             {props.isNew? 'Publish' : 'Update'}

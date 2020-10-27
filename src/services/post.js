@@ -1,7 +1,7 @@
 export const postQuery = {
 	GET_POST: (id) => { 
 		return `query {
-			post(id: 1) {
+			post(id: ${id}) {
 				id
 				title
 				body
@@ -15,6 +15,7 @@ export const postQuery = {
 				data {
 					id
 					title
+					body
 				}
 				meta {
 					totalCount
